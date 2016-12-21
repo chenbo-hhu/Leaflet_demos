@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo_template</title>
+    <script src="bower_components/seajs/dist/sea.js"></script>
+    <script src="bower_components/seajs-css/src/seajs-css.js"></script>
+    <script src="bower_components/seajs-preload/src/seajs-preload.js"></script>
+    <style>
+        html,
+        body,
+        div#map {
+            height: 100%;
+            width: 100%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<div id="sidebar" class="sidebar collapsed">
+    <!-- Nav tabs -->
+    <div class="sidebar-tabs">
+        <ul role="tablist">
+            <li><a href="#coordinate" role="tab"><i class="fa fa-bars"></i></a></li>
+            <li><a role="tab"><i class="fa fa-remove"></i></a></li>
+        </ul>
+        <ul role="tablist">
+            <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+        </ul>
+    </div>
+    <!-- Tab panes -->
+    <div class="sidebar-content">
+        <div class="sidebar-pane" id="coordinate">
+            <h1 class="sidebar-header">坐标点数据<span class="sidebar-close"><i class="fa fa-caret-right"></i></span></h1>
+            <p></p>
+        </div>
+        <div class="sidebar-pane" id="settings">
+            <h1 class="sidebar-header">设置<span class="sidebar-close"><i class="fa fa-caret-right"></i></span></h1>
+        </div>
+    </div>
+</div>
+<div id="map" class="sidebar-map"></div>
+<pre id="selection">&nbsp;</pre>
+</html>
+
+<script src="./source/demo_template_css.js"></script>
+<script src="./source/demo_template.js"></script>

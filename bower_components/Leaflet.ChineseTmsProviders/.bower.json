@@ -1,0 +1,14 @@
+{
+  "name": "Leaflet.ChineseTmsProviders",
+  "homepage": "https://github.com/htoooth/Leaflet.ChineseTmsProviders",
+  "_release": "0ee194b574",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "0ee194b574b8271aaf1430ffee6019760eda78c8"
+  },
+  "_source": "https://github.com/htoooth/Leaflet.ChineseTmsProviders.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/htoooth/Leaflet.ChineseTmsProviders.git",
+  "_direct": true
+}

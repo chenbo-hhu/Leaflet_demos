@@ -1,0 +1,15 @@
+{
+  "name": "Leaflet.MeasureControl",
+  "homepage": "https://github.com/makinacorpus/Leaflet.MeasureControl",
+  "version": "1.1.0",
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.0",
+    "commit": "3237986073720818efdd643dc2487ad4875ff673"
+  },
+  "_source": "https://github.com/makinacorpus/Leaflet.MeasureControl.git",
+  "_target": "^1.1.0",
+  "_originalSource": "https://github.com/makinacorpus/Leaflet.MeasureControl.git",
+  "_direct": true
+}

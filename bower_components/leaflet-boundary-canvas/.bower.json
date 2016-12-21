@@ -1,0 +1,14 @@
+{
+  "name": "leaflet-boundary-canvas",
+  "homepage": "https://github.com/aparshin/leaflet-boundary-canvas",
+  "_release": "d992c4d46f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d992c4d46f0af9155d2b8b4944d64711353ecaba"
+  },
+  "_source": "https://github.com/aparshin/leaflet-boundary-canvas.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/aparshin/leaflet-boundary-canvas.git",
+  "_direct": true
+}

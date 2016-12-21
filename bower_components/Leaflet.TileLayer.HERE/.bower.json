@@ -1,0 +1,13 @@
+{
+  "name": "Leaflet.TileLayer.HERE",
+  "_release": "25c47b54f0",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "25c47b54f03e438e4206dc4ff9e2e7b7adc35657"
+  },
+  "_source": "https://gitlab.com/IvanSanchez/Leaflet.TileLayer.HERE.git",
+  "_target": "*",
+  "_originalSource": "https://gitlab.com/IvanSanchez/Leaflet.TileLayer.HERE.git",
+  "_direct": true
+}

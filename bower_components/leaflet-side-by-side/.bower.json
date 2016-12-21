@@ -1,0 +1,15 @@
+{
+  "name": "leaflet-side-by-side",
+  "homepage": "https://github.com/digidem/leaflet-side-by-side",
+  "version": "2.0.0",
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.0",
+    "commit": "b000e8ddbc06802b2ccd2b07efa34c16c665cb2e"
+  },
+  "_source": "https://github.com/digidem/leaflet-side-by-side.git",
+  "_target": "^2.0.0",
+  "_originalSource": "https://github.com/digidem/leaflet-side-by-side.git",
+  "_direct": true
+}

@@ -1,0 +1,14 @@
+{
+  "name": "leaflet-tilelayer-mask",
+  "homepage": "https://github.com/frogcat/leaflet-tilelayer-mask",
+  "_release": "dc24a692a4",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "dc24a692a4a4fd3eae1c2e2ddd2e25dbf7c297d2"
+  },
+  "_source": "https://github.com/frogcat/leaflet-tilelayer-mask.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/frogcat/leaflet-tilelayer-mask.git",
+  "_direct": true
+}

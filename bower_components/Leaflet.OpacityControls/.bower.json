@@ -1,0 +1,14 @@
+{
+  "name": "Leaflet.OpacityControls",
+  "homepage": "https://github.com/lizardtechblog/Leaflet.OpacityControls",
+  "_release": "fde6d12e2e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fde6d12e2e62d6dfd970fd74087e693b4d997bd0"
+  },
+  "_source": "https://github.com/lizardtechblog/Leaflet.OpacityControls.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/lizardtechblog/Leaflet.OpacityControls.git",
+  "_direct": true
+}

@@ -1,0 +1,15 @@
+{
+  "name": "leaflet-geojson-selector",
+  "homepage": "https://github.com/stefanocudini/leaflet-geojson-selector",
+  "version": "0.4.0",
+  "_release": "0.4.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.4.0",
+    "commit": "266255ffaf961f5826651a52ab545c09af1c6e41"
+  },
+  "_source": "https://github.com/stefanocudini/leaflet-geojson-selector.git",
+  "_target": "^0.4.0",
+  "_originalSource": "https://github.com/stefanocudini/leaflet-geojson-selector.git",
+  "_direct": true
+}

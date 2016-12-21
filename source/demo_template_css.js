@@ -1,0 +1,15 @@
+seajs.use(['./bower_components/jquery-ui/themes/mint-choc/jquery-ui.min.css',
+    './bower_components/leaflet/dist/leaflet.css',
+    './bower_components/leaflet-draw/dist/leaflet.draw.css',
+    './bower_components/leaflet.fullscreen/Control.FullScreen.css',
+    './bower_components/leaflet-minimap/dist/Control.MiniMap.min.css',
+    './bower_components/Leaflet.ZoomBox/L.Control.ZoomBox.css',
+    './bower_components/Leaflet.EasyButton/src/easy-button.css',
+    './bower_components/font-awesome/css/font-awesome.min.css',
+    './bower_components/Leaflet.MeasureControl/leaflet.measurecontrol.css',
+    './bower_components/leaflet-measure/dist/leaflet-measure.css',
+    './bower_components/leaflet-measure-path/leaflet-measure-path.css',
+    './bower_components/sidebar-v2/css/leaflet-sidebar.css',
+    './bower_components/leaflet-geojson-selector/src/leaflet-geojson-selector.css',
+    './source/demo_template.css']
+    );

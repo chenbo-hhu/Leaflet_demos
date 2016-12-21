@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leafet-demo</title>
+    <link href="bower_components/leaflet/dist/leaflet.css" rel="stylesheet">
+    <link href="bower_components/leaflet-sidebar/src/L.Control.Sidebar.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
+    <link rel="stylesheet" href="source/demo_gibs.css">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="bower_components/leaflet-sidebar/src/L.Control.Sidebar.js"></script>
+    <script src="bower_components/Leaflet.ChineseTmsProviders/src/leaflet.ChineseTmsProviders.js"></script>
+    <script src="bower_components/leaflet-GIBS/src/GIBSMetadata.js"></script>
+    <script src="bower_components/leaflet-GIBS/src/GIBSLayer.js"></script>
+    <script src="bower_components/leaflet-hash/leaflet-hash.js"></script>
+    <script src="bower_components/leaflet-providers/leaflet-providers.js"></script>
+
+    <style type="text/css">
+        html{height: 100%}
+        body{height: 100%; margin: 0px; padding: 0px}
+        #mapDiv{height: 100%}
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <button id="prev">前一天</button>
+        <input id="date">
+        <button id="next">后一天</button>
+        <div id="transparent-container">
+            <label>
+                <input id="transparent-checkbox" type="checkbox" checked>
+                Transparent no-data areas
+            </label>
+        </div>
+    </div>
+
+    <div id="mapDiv">
+    </div>
+    <div id="sidebar">
+        <h1>leaflet-sidebar</h1>
+    </div>
+</body>
+</html>
+
+<script>
+
+    var layers = [];
+    layers.push(L.tileLayer.chinaProvider("Google.Normal.Map",{minZoom: 1}));
+
+    var map = new L.map('mapDiv', { layers: layers, attributionControl: false }).setView([29.92831, 121.5484], 10);
+
+    L.hash(map);
+
+    //处理时间
+    var DATE_FORMAT = 'dd.mm.yy';
+    var strToDateUTC = function(str){
+        var date = $.datepicker.parseDate(DATE_FORMAT, str);
+        return new Date(date - date.getTimezoneOffset()*60*1000)
+    };
+
+    var $date = $('#date');
+
+    var now = new Date();
+    var oneDay = 1000*60*60*24,
+            startTimestamp = now.getTime() - oneDay + now.getTimezoneOffset()*60*1000,
+            startDate = new Date(startTimestamp);// 前一天
+
+    $date.val($.datepicker.formatDate(DATE_FORMAT, startDate));
+
+    var alterDate = function (delta) {
+        var date = $.datepicker.parseDate(DATE_FORMAT, $date.val());
+
+        $date
+                .val($.datepicker.formatDate(DATE_FORMAT, new Date(date.valueOf() + delta * oneDay)))
+                .change();
+    };
+
+    $("#prev").on('click',alterDate.bind(null, -1));
+    $("#next").on('click',alterDate.bind(null, 1));
+
+    var baseLayers = {};
+
+    for(var id in L.GIBS_LAYERS){
+        baseLayers[id] = new L.GIBSLayer(id, {date: startDate, transparent: true});
+    }
+
+    L.control.layers(baseLayers, null, {collapsed: true}).addTo(map);
+
+    baseLayers[L.GIBS_LAYERS.MODIS_Aqua_CorrectedReflectance_TrueColor.title].addTo(map);
+
+    $date.datepicker({
+        dateFormat: DATE_FORMAT
+    }).change(function () {
+        var date = strToDateUTC(this.value);
+        for (var l in baseLayers){
+            baseLayers[l].setDate(date)
+        }
+    });
+
+    map.on('click', function () {
+        $date.datepicker('hide');
+    }).on('baselayerchange',function (event) {
+        $('#controls').toggle(event.layer.isTemporal());
+        $('#transparent-container').toggle(!!event.layer.setTransparent);
+    });
+
+    $('#transparent-checkbox').change(function () {
+        for(var l in baseLayers){
+            baseLayers[l].setTransparent && baseLayers[l].setTransparent(this.checked);
+        }
+    });
+
+    var sidebar = L.control.sidebar('sidebar',{
+        position: 'left'
+    });
+    map.addControl(sidebar);
+
+//    setInterval(function () {
+//        sidebar.toggle();
+//    },7000);
+
+</script>

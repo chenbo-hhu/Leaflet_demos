@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo_provides</title>
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/mint-choc/jquery-ui.min.css">
+    <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="bower_components/leaflet-draw/dist/leaflet.draw.css">
+    <link rel="stylesheet" href="bower_components/leaflet.fullscreen/Control.FullScreen.css">
+    <link rel="stylesheet" href="bower_components/leaflet-minimap/dist/Control.MiniMap.min.css">
+    <link rel="stylesheet" href="source/demo_template.css">
+    <style>
+        html,
+        body,
+        div#map {
+            height: 100%;
+            width: 100%;
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="map">
+
+</div>
+
+<script src="bower_components/seajs/dist/sea.js"></script>
+<script src="bower_components/seajs-preload/src/seajs-preload.js"></script>
+
+<script>
+    seajs.config({
+        base: "./bower_components/",
+        alias:{
+            "jquery":"jquery/dist/jquery.js",
+            "jquery-ui": "jquery-ui/jquery-ui.js",
+            "leaflet": "leaflet/dist/leaflet-src.js",
+            "leaflet-providers": "leaflet-providers/leaflet-providers.js",
+            "leaflet-hash": "leaflet-hash/leaflet-hash.js",
+            "leaflet-draw": "leaflet-draw/dist/leaflet.draw-src.js",
+            "leaflet.fullscreen": "leaflet.fullscreen/Control.FullScreen.js",
+            "leaflet-minimap": "leaflet-minimap/dist/Control.MiniMap.min.js"
+            "leaflet.zoombox": "Leaflet.ZoomBox/L.Control.ZoomBox.js"
+        },
+        preload: ['jquery', 'leaflet']
+    });
+    seajs.use("./source/demo_timeline")
+</script>
+
+</body>
+</html>
