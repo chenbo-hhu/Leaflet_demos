@@ -104,6 +104,8 @@ L.Control.SideBySide = L.Control.extend({
     return this
   },
 
+// Added by chenbo-hhu to fit the usage of removing one side of layer
+// instead of removing the whole container.
   removeFromMap: function () {
     this._removeEvents()
     this._map = null

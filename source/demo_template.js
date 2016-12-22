@@ -6,22 +6,23 @@
 seajs.config({
 base: "./bower_components/",
 alias:{
-    "jquery":"jquery/dist/jquery.js",
-    "jquery-ui": "jquery-ui/jquery-ui.js",
-    "leaflet": "leaflet/dist/leaflet-src.js",
+    "jquery":"jquery/dist/jquery.min.js",
+    "jquery-ui": "jquery-ui/jquery-ui.min.js",
+    "leaflet": "leaflet/dist/leaflet.js",
     "leaflet-providers": "leaflet-providers/leaflet-providers.js",
     "leaflet-hash": "leaflet-hash/leaflet-hash.js",
-    "leaflet-draw": "leaflet-draw/dist/leaflet.draw-src.js",
+    "leaflet-draw": "leaflet-draw/dist/leaflet.draw.js",
     "leaflet.fullscreen": "leaflet.fullscreen/Control.FullScreen.js",
     "leaflet-minimap": "leaflet-minimap/dist/Control.MiniMap.min.js",
-    "leaflet.zoombox": "Leaflet.ZoomBox/L.Control.ZoomBox.js",
+    "leaflet.zoombox": "Leaflet.ZoomBox/L.Control.ZoomBox.min.js",
     "leaflet-side-by-side": "leaflet-side-by-side/leaflet-side-by-side.js",
     "leaflet.easybutton": "Leaflet.EasyButton/src/easy-button.js",
-    "leaflet.measurecontrol": "Leaflet.MeasureControl/leaflet.measurecontrol.js",
-    "leaflet-measure": "leaflet-measure/dist/leaflet-measure.js",
+    "leaflet.measurecontrol": "Leaflet.MeasureControl/leaflet.measurecontrol.min.js",
+    "leaflet-measure": "leaflet-measure/dist/leaflet-measure.min.js",
     "leaflet-measure-path": "leaflet-measure-path/leaflet-measure-path.js",
-    "leaflet-sidebar": "sidebar-v2/js/leaflet-sidebar.js",
+    "leaflet-sidebar": "sidebar-v2/js/leaflet-sidebar.min.js",
     "leaflet-geojson-selector": "leaflet-geojson-selector/src/leaflet-geojson-selector.js",
+    "shp": "shp/dist/shp.min.js",
 },
 preload: ['jquery', 'leaflet']
 });
@@ -29,8 +30,9 @@ preload: ['jquery', 'leaflet']
 var libs = ['jquery-ui', 'leaflet-hash', 'leaflet-providers','leaflet.fullscreen', 
 'leaflet-minimap', 'leaflet.zoombox', 'leaflet-side-by-side',
 'leaflet.easybutton', 'leaflet.measurecontrol', 'leaflet-measure', 'leaflet-measure-path', 
-'leaflet-sidebar', 'leaflet-geojson-selector'];
+'leaflet-sidebar', 'leaflet-geojson-selector', 'shp'];
 
+// 使用回调是为了保证先载入leaflet-draw, 再载入与之有依赖关系的库 
 seajs.use(['leaflet-draw'], function  () {
     seajs.use(libs, function () {        
 
@@ -39,7 +41,7 @@ seajs.use(['leaflet-draw'], function  () {
             fullscreenControlOptions: {
                 position: 'topleft'
             }
-        }).setView([29.92831, 121.5484], 10);
+        }).setView([29.92831, 121.5484], 5);
 
         // 添加Hash工具
         L.hash(map);
@@ -153,7 +155,7 @@ seajs.use(['leaflet-draw'], function  () {
         var sideByside = function () {
             var flag = false;
             return function () {
-                console.log(flag);
+                // console.log(flag);
                 if (flag){
                     compareControl.removeFromMap();
                     flag = false
@@ -182,17 +184,22 @@ seajs.use(['leaflet-draw'], function  () {
         var sidebar = L.control.sidebar('sidebar', {position: 'right'}).addTo(map);
 
         // 添加Geojson-Selector
-        $.ajax({
-            url: './china/admin_level_5.geojson',
-            success: function (json) {
-            var geoLayer = L.geoJson(json).addTo(map);
-            var geoList = L.control.geoJsonSelector(geoLayer);
+        var geoLayer = L.geoJson({features:[]},{onEachFeature:function popUp(f,l){
+            var out = [];
+            if (f.properties){
+                for(var key in f.properties){
+                    out.push(key+": "+f.properties[key]);
+                }
+            l.bindPopup(out.join("<br />"));
+            }
+        }}).addTo(map);
 
-            geoList.on('change', function(e) {
-                $('#selection').text(JSON.stringify(e.layers[0].feature.properties));
-            }).addTo(map);}
-        });
 
+        var chinaShapefileUrl = './china/CHN_adm1';
+        shp(chinaShapefileUrl).then(function (data) {
+            geoLayer.addData(data);
+            // var geoList = L.control.geoJsonSelector(geoLayer).addTo(map);
+        })
     });
 });
 
