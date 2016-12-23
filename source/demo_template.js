@@ -23,14 +23,16 @@ alias:{
     "leaflet-sidebar": "sidebar-v2/js/leaflet-sidebar.min.js",
     "leaflet-geojson-selector": "leaflet-geojson-selector/src/leaflet-geojson-selector.js",
     "shp": "shp/dist/shp.min.js",
+    "spin": "spin.js/spin.min.js",
+    "leaflet-spin": "leaflet-spin/leaflet.spin.min.js",
 },
-preload: ['jquery', 'leaflet']
+preload: ['jquery', 'leaflet', "spin"]
 });
 
 var libs = ['jquery-ui', 'leaflet-hash', 'leaflet-providers','leaflet.fullscreen', 
 'leaflet-minimap', 'leaflet.zoombox', 'leaflet-side-by-side',
 'leaflet.easybutton', 'leaflet.measurecontrol', 'leaflet-measure', 'leaflet-measure-path', 
-'leaflet-sidebar', 'leaflet-geojson-selector', 'shp'];
+'leaflet-sidebar', 'leaflet-geojson-selector', 'shp', 'leaflet-spin'];
 
 // 使用回调是为了保证先载入leaflet-draw, 再载入与之有依赖关系的库 
 seajs.use(['leaflet-draw'], function  () {
@@ -194,11 +196,14 @@ seajs.use(['leaflet-draw'], function  () {
             }
         }}).addTo(map);
 
-
+        // 显示载入的图标
+        map.spin(true);
         var chinaShapefileUrl = './china/CHN_adm1';
         shp(chinaShapefileUrl).then(function (data) {
+            map.spin(false);
             geoLayer.addData(data);
             // var geoList = L.control.geoJsonSelector(geoLayer).addTo(map);
+            // 去除载入的图标
         })
     });
 });
