@@ -1,0 +1,9 @@
+/*.leaflet-control-layers.leaflet-control.leaflet-control-layers-expanded {
+    height: 500px;
+    overflow-y: scroll;
+}*/
+
+.leaflet-control-layers-scrollbar {
+	height: 500px;
+	overflow-y: scroll;
+}

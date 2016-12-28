@@ -1,11 +1,11 @@
 {
   "name": "leaflet-GIBS",
   "homepage": "https://github.com/aparshin/leaflet-GIBS",
-  "_release": "35d08ac110",
+  "_release": "198694a4fd",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "35d08ac110add0ec61eedb75ec14320cc78454c8"
+    "commit": "198694a4fd012f3991bae7c854a0b1c719b8c80b"
   },
   "_source": "https://github.com/aparshin/leaflet-GIBS.git",
   "_target": "*",

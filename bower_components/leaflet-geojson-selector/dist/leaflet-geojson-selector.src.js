@@ -109,7 +109,9 @@ L.Control.GeoJSONSelector = L.Control.extend({
 			map.on('moveend', this._updateListVisible, this);
 
 		map.whenReady(function(e) {
-			container.style.height = (map.getSize().y)+'px';
+			// container.style.height = (map.getSize().y)+'px';
+			// Modified by chenbo-hhu to fit permits to have a scrollbar if overlays heighter than the map.
+			container.style.height = (map.getSize().y / 3) + 'px';
 		});
 
 		this._initToggle();
@@ -366,12 +368,23 @@ L.Control.GeoJSONSelector = L.Control.extend({
 		}
 	},
 
+	// Modified by chenbo-hhu to fit the css file. 
 	_expand: function () {
-		this._container.className = this._container.className.replace(' geojson-list-collapsed', '');
+		this._container.className = this._container.className.replace(' geojson-list-collapsed', ' geojson-expanded');
+		// container.style.height = (map.getSize().y)+'px';
+		// Modified by chenbo-hhu to fit permits to have a scrollbar if overlays heighter than the map.
+		this._container.style.height = (this._map.getSize().y / 3) + 'px';
 	},
 
+	// Modified by chenbo-hhu to fit the css file. 
 	_collapse: function () {
-		L.DomUtil.addClass(this._container, 'geojson-list-collapsed');
+		// L.DomUtil.addClass(this._container, 'geojson-list-collapsed');
+		if(this._container.className.indexOf(" geojson-expande") === -1){
+			L.DomUtil.addClass(this._container, 'geojson-list-collapsed');
+			this._container.style.height = '24px';
+		}
+		this._container.className = this._container.className.replace(' geojson-expanded', ' geojson-list-collapsed');
+		this._container.style.height = '24px';
 	},
 
     _moveTo: function(layer) {

@@ -10,6 +10,10 @@ seajs.use(['./bower_components/jquery-ui/themes/mint-choc/jquery-ui.min.css',
     './bower_components/leaflet-measure/dist/leaflet-measure.css',
     './bower_components/leaflet-measure-path/leaflet-measure-path.css',
     './bower_components/sidebar-v2/css/leaflet-sidebar.css',
-    './bower_components/leaflet-geojson-selector/src/leaflet-geojson-selector.css',
-    './source/demo_template.css']
+    './bower_components/leaflet-geojson-selector/dist/leaflet-geojson-selector.src.css',
+    './bower_components/leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.css',
+    './bower_components/leaflet-timedimension/dist/leaflet.timedimension.control.css',
+    './source/demo_template.css',
+    './source/layers_control.css',
+    ]
     );

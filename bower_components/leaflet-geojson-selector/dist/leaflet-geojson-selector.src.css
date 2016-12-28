@@ -14,8 +14,9 @@
  * git@github.com:stefanocudini/leaflet-geojson-selector.git 
  * 
  */
+ /*Modified by chenbo-hhu to better fit specific situation.*/
  
-.leaflet-container .geojson-list {
+.leaflet-container .geojson-list.geojson-expanded {
 	position:relative;
 	float:left;
 	color:#1978cf;
@@ -25,13 +26,15 @@
 	background-color: rgba(255, 255, 255, 0.6);
 	z-index:1000;	
 	box-shadow: 0 1px 7px rgba(0,0,0,0.65);
-	margin: 0;
+	/*Modified by chenbo-hhu*/
+	margin: 10px;
+	/*margin: 0;*/
 	min-width: 50px;
 	min-height:26px;
 	overflow-y: scroll;
 }
 
-.leaflet-control.geojson-list .geojson-list-toggle {
+.leaflet-control.geojson-list.geojson-expanded .geojson-list-toggle {
 	display: none;
 }
 .leaflet-control.geojson-list.geojson-list-collapsed .geojson-list-toggle {
@@ -85,12 +88,17 @@
 	cursor: pointer;
 	vertical-align: middle;
 }
-.leaflet-control.geojson-list .geojson-list-group {
+.leaflet-control.geojson-list.geojson-expanded .geojson-list-group {
 	display: block;
 }
-.leaflet-control.geojson-list.geojson-list-collapsed .geojson-list-ul {
+/*Modified by chenbo-hhu to make the geojson-list-group collapsed correctly.*/
+.leaflet-control.geojson-list.geojson-list-collapsed .geojson-list-group {
 	display: none;
 }
+/*Original css*/
+/*.leaflet-control.geojson-list.geojson-list-collapsed .geojson-list-ul {
+	display: none;
+}*/
 
 .geojson-list .geojson-list-toggle {
 	display:block;
@@ -98,6 +106,7 @@
 	width:26px;
 	height:26px;
 	background: url('../images/list-icon.png') no-repeat 2px 2px;
+	background-color: rgba(255, 255, 255, 1);
 	border-radius:4px;
 }
 .geojson-list .geojson-list-toggle:hover,
